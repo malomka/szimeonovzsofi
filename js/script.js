@@ -18,7 +18,7 @@
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
 
-  /* Mobile nav toggle */
+  /* mobile nav toggle */
   if (navToggle) {
     navToggle.addEventListener("click", function () {
       var isOpen = navList.classList.toggle("is-open");
@@ -55,7 +55,7 @@
     });
   }
 
-  /* Reveal on scroll */
+  /* reveal on scroll */
   var revealEls = document.querySelectorAll(".reveal, .project__cell, .contact__row");
   if ("IntersectionObserver" in window && revealEls.length) {
     var reveal = new IntersectionObserver(
@@ -79,7 +79,26 @@
     });
   }
 
-  /* Footer year */
+  /* play button on videos */
+  document.querySelectorAll('.project__video-wrap').forEach((wrapper) => {
+  const video = wrapper.querySelector('.project__video');
+  const playButton = wrapper.querySelector('.project__play');
+
+  playButton.addEventListener('click', () => {
+    video.play();
+    playButton.style.display = 'none';
+  });
+
+  video.addEventListener('click', () => {
+    if (!video.paused) {
+      video.pause();
+      playButton.style.display = 'flex';
+    }
+  });
+});
+
+
+  /* footer year */
   var yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
