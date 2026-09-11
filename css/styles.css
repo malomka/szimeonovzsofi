@@ -372,7 +372,7 @@ h1, h2 {
   background: var(--cream);
   color: var(--red);
   padding: clamp(64px, 10vw, 140px) var(--gutter);
-  text-align: left;
+  text-align: right;
 }
 
 .contact h2 {
@@ -515,6 +515,11 @@ h1, h2 {
   }
 
   .project__cell:nth-child(2) { margin-top: 0; }
+
+  .contact {
+  text-align: left;
+  }
+
 }
 
 @media (max-width: 640px) {
