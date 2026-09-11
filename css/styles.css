@@ -308,7 +308,7 @@ h1, h2 {
 }
 
 /* ---------------------------------------------------
-   Project sections (Rodolfo / Konyha / Padthai / Onov)
+   Project sections (Rodolfo / Konyha / Padthai / Onov / Bigfish)
    --------------------------------------------------- */
 
 .project {
@@ -363,6 +363,65 @@ h1, h2 {
 .project__title--left { left: var(--gutter); }
 .project__title--right { right: var(--gutter); }
 .project__title--on-red { color: var(--red); }
+
+.project__video-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.project__video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 64px;
+  height: 64px;
+
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.project__play span {
+  display: block;
+
+  width: 0;
+  height: 0;
+
+  margin-left: 3px;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid rgba(255, 255, 255, 0.95);
+}
+
+.project__play:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: rgba(255, 255, 255, 0.25);
+}
 
 /* ---------------------------------------------------
    Contact / Footer
@@ -582,64 +641,5 @@ h1, h2 {
   .site-footer{
     flex-direction: column;
   }
-}
-
-.project__video-wrap {
-  position: relative;
-  width: 100%;
-}
-
-.project__video {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.project__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 64px;
-  height: 64px;
-
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.12),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
-
-  transition: transform 0.25s ease, background 0.25s ease;
-}
-
-.project__play span {
-  display: block;
-
-  width: 0;
-  height: 0;
-
-  margin-left: 3px;
-
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 12px solid rgba(255, 255, 255, 0.95);
-}
-
-.project__play:hover {
-  transform: translate(-50%, -50%) scale(1.08);
-  background: rgba(255, 255, 255, 0.25);
 }
 
