@@ -448,6 +448,7 @@ h1, h2 {
 .site-footer__top {
   text-decoration: underline;
   text-underline-offset: 3px;
+  margin: 13px 0;
 }
 
 /* ---------------------------------------------------
@@ -576,6 +577,10 @@ h1, h2 {
   .contact__row {
     flex-direction: column;
     gap: 4px;
+  }
+
+  .site-footer{
+    flex-direction: column;
   }
 }
 
