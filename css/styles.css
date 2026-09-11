@@ -426,6 +426,54 @@ h1, h2 {
 }
 
 /* ---------------------------------------------------
+   Video hover / play animations
+   --------------------------------------------------- */
+
+.project__video-wrap {
+  overflow: hidden;
+}
+
+.project__video {
+  transition: transform 0.6s var(--ease);
+}
+
+.project__video-wrap:hover .project__video {
+  transform: scale(1.035);
+}
+
+.project__video-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.35) 100%);
+  opacity: 1;
+  transition: opacity 0.5s var(--ease);
+  pointer-events: none;
+}
+
+.project__video-wrap:hover::after {
+  opacity: 0.4;
+}
+
+.project__play {
+  animation: play-breathe 2.6s ease-in-out infinite;
+}
+
+.project__video-wrap:hover .project__play {
+  animation-play-state: paused;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+@keyframes play-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%      { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.project__video-wrap.is-playing::after {
+  opacity: 0;
+}
+
+/* ---------------------------------------------------
    Contact / Footer
    --------------------------------------------------- */
 

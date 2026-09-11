@@ -107,12 +107,14 @@
   playButton.addEventListener('click', () => {
     video.play();
     playButton.style.display = 'none';
+    wrapper.classList.add('is-playing');
   });
 
   video.addEventListener('click', () => {
     if (!video.paused) {
       video.pause();
       playButton.style.display = 'flex';
+      wrapper.classList.remove('is-playing');
     }
   });
 });
