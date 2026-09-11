@@ -1,6 +1,19 @@
 (function () {
   "use strict";
 
+  var lenis = new Lenis({
+    duration: 0.7,
+    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    wheelMultiplier: 1.15
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
   var header = document.getElementById("siteHeader");
   var navToggle = document.getElementById("navToggle");
   var navList = document.getElementById("navList");
@@ -26,9 +39,16 @@
     });
 
     navLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
+      link.addEventListener("click", function (e) {
         navList.classList.remove("is-open");
         navToggle.setAttribute("aria-expanded", "false");
+
+        var targetId = link.getAttribute("href");
+        var targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          lenis.scrollTo(targetEl, { offset: -76 }); // -76 = --header-h
+        }
       });
     });
   }
@@ -67,7 +87,7 @@
           }
         });
       },
-      { threshold: 0.18 }
+      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
     );
 
     revealEls.forEach(function (el) {
@@ -99,6 +119,14 @@
 
 
   /* footer year */
+  var backToTop = document.querySelector(".site-footer__top");
+  if (backToTop) {
+    backToTop.addEventListener("click", function (e) {
+      e.preventDefault();
+      lenis.scrollTo(0);
+    });
+  }
+
   var yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
